@@ -1,0 +1,47 @@
+/* src/app/info/info.module.css */
+.info {
+    width: 96vw;
+    height: 50vh;
+    margin-left: 2vw;
+    margin-top: 2vh;
+    display: flex;
+    position: fixed;
+  }
+  
+  .infoblock {
+    /* 如果有需要所有 infoblock 通用的样式，可以在这里添加 */
+  }
+  
+  .logoimage {
+    width: 25%;
+  }
+  
+  .emailins {
+    width: 25%;
+    margin-left: 4%;
+    font-family: 'Oppo Sans Medium';
+    font-size: 1.3rem;
+  }
+  
+  .introduce {
+    width: 50%;
+    margin-left: 0;
+    font-family: 'Oppo Sans Medium';
+    font-size: 1.3rem;
+  }
+  
+  .arrow {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-top: 0.5em solid transparent;
+    border-bottom: 0.5em solid transparent;
+    border-left: 0.5em solid black;
+    vertical-align: middle;
+  }
+  
+  .designcompany {
+    font-family: 'Oppo Sans Heavy';
+    font-size: 2.8rem;
+  }
+  

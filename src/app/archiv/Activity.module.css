@@ -1,0 +1,79 @@
+.activity {
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .lineWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  .svgLine {
+    width: 90%;
+  }
+  
+  .activityContent {
+    display: flex;
+    align-items: flex-start; /* 顶端对齐 */
+    width: 90%;
+  }
+  
+  .activityHeader {
+    flex: 0.8;
+    padding-right: 30px;
+  }
+  
+  .activityHeader h2 {
+    margin: 0;
+    font-size: 1.8vw; /* 调整艺术家姓名字体大小 */
+    font-family: 'oppo Sans Heavy';
+  }
+  
+  .activityHeader p {
+    margin: 5px 0 0;
+    font-size: 14px; /* 调整日期字体大小 */
+    color: #888;
+  }
+  
+  .activityDescription {
+    flex: 2;
+    padding-right: 30px;
+    font-family: 'oppo Sans Heavy';
+  }
+  
+  .activityDescription p {
+    margin: 0;
+    font-size: 16px; /* 调整描述字体大小 */
+    
+  }
+  
+  .activityArtist {
+    flex: 1.2;
+    padding-right: 30px;
+  }
+  
+  .activityArtist h3 {
+    margin: 0;
+    font-size: 1.8vw;  /* 调整艺术家姓名字体大小 */
+    font-family: 'oppo Sans Heavy';
+  }
+  
+  .activityArtist p {
+    margin: 5px 0 0;
+    font-size: 20px; /* 调整标签字体大小 */
+    color: #888;
+  }
+  
+  .activityImage {
+    flex: 1.5;
+  }
+  
+  .activityImage img {
+    width: 100%;
+  }
+  
