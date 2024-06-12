@@ -2,7 +2,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import Link from "next/link";
 import { ReactNode } from "react";
 import "../globals.css"; // 导入全局CSS样式
@@ -16,29 +16,15 @@ type LayoutProps = {
 export default function Layout({ children }: LayoutProps) {
   const [loading, setLoading] = useState(true);
   const pathname = usePathname();
-  const router = useRouter();
 
   useEffect(() => {
     const handleRouteChangeStart = () => setLoading(true);
-    const handleRouteChangeComplete = () => {
-      // 延迟执行 setLoading(false)，以确保 Loading 组件处理完播放事件
-      setTimeout(() => setLoading(false), 500);
-    };
+    const handleRouteChangeComplete = () => setLoading(false);
 
-    router.events?.on('routeChangeStart', handleRouteChangeStart);
-    router.events?.on('routeChangeComplete', handleRouteChangeComplete);
-    router.events?.on('routeChangeError', handleRouteChangeComplete);
+    handleRouteChangeStart();
+    handleRouteChangeComplete();
 
-    return () => {
-      router.events?.off('routeChangeStart', handleRouteChangeStart);
-      router.events?.off('routeChangeComplete', handleRouteChangeComplete);
-      router.events?.off('routeChangeError', handleRouteChangeComplete);
-    };
   }, [pathname]);
-
-  const handleLoadingComplete = () => {
-    setLoading(false);
-  };
 
   useEffect(() => {
     if (pathname === '/archiv') {
@@ -75,7 +61,7 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <>
       {loading ? (
-        <Loading onLoadingComplete={handleLoadingComplete} />
+        <Loading />
       ) : (
         <div>
           <nav className="navbar">
