@@ -23,7 +23,6 @@ export default function Layout({ children }: LayoutProps) {
 
     handleRouteChangeStart();
     handleRouteChangeComplete();
-
   }, [pathname]);
 
   useEffect(() => {
@@ -34,19 +33,27 @@ export default function Layout({ children }: LayoutProps) {
         const scrollTop = window.scrollY;
 
         if (scrollTop > 50) { // Adjust the scroll value as needed
-          logo.classList.add('shrunk');
-          links.forEach((link, index) => {
-            setTimeout(() => {
-              link.classList.add('hidden');
-            }, index * 100);
-          });
+          if (logo) {
+            logo.classList.add('shrunk');
+          }
+          if (links) {
+            links.forEach((link, index) => {
+              setTimeout(() => {
+                link.classList.add('hidden');
+              }, index * 100);
+            });
+          }
         } else {
-          logo.classList.remove('shrunk');
-          links.forEach((link, index) => {
-            setTimeout(() => {
-              link.classList.remove('hidden');
-            }, index * 100);
-          });
+          if (logo) {
+            logo.classList.remove('shrunk');
+          }
+          if (links) {
+            links.forEach((link, index) => {
+              setTimeout(() => {
+                link.classList.remove('hidden');
+              }, index * 100);
+            });
+          }
         }
       };
 
@@ -61,7 +68,7 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <>
       {loading ? (
-        <Loading />
+        <Loading onLoadingComplete={() => setLoading(false)} />
       ) : (
         <div>
           <nav className="navbar">
