@@ -1,9 +1,8 @@
-// src/app/components/Layout.tsx
-"use client";
+"use client"; //客户端渲染
 
-import { useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation';
-import Link from "next/link";
+import { useState, useEffect } from 'react';  // React 的 Hooks，用于状态管理和副作用处理
+import { usePathname } from 'next/navigation'; //Next.js 导航钩子，用于获取当前路径名
+import Link from "next/link"; //Link 是 Next.js 的链接组件，用于导航
 import { ReactNode } from "react";
 import "../globals.css"; // 导入全局CSS样式
 import Image from 'next/image';
@@ -14,19 +13,19 @@ type LayoutProps = {
 };
 
 export default function Layout({ children }: LayoutProps) {
-  const [loading, setLoading] = useState(true);
-  const pathname = usePathname();
+  const [loading, setLoading] = useState(true);  //表示当前是否处于加载状态
+  const pathname = usePathname(); //pathname：当前的路径名
 
-  useEffect(() => {
+  useEffect(() => {   //这个 useEffect 钩子用于在路径名变化时设置加载状态
     const handleRouteChangeStart = () => setLoading(true);
     const handleRouteChangeComplete = () => setLoading(false);
 
-    handleRouteChangeStart();
+    handleRouteChangeStart();  //handleRouteChangeStart 和 handleRouteChangeComplete 分别在路由开始变化和完成变化时调用
     handleRouteChangeComplete();
   }, [pathname]);
 
   useEffect(() => {
-    if (pathname === '/archiv') {
+    if (pathname !== '/') { // 确保滚动隐藏效果在所有非主页的页面应用
       const handleScroll = () => {
         const logo = document.querySelector('.nav-image');
         const links = document.querySelectorAll('.nav-link');
@@ -79,16 +78,16 @@ export default function Layout({ children }: LayoutProps) {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link href="/archiv" className="nav-link">Archiv</Link>
+                <Link href="/archiv" className={`nav-link ${pathname === '/archiv' ? 'active' : pathname === '/' ? 'home-page' : ''}`}>Archiv</Link>
               </li>
               <li className="nav-item">
-                <Link href="/object" className="nav-link">Object</Link>
+                <Link href="/object" className={`nav-link ${pathname === '/object' ? 'active' : pathname === '/' ? 'home-page' : ''}`}>Object</Link>
               </li>
               <li className="nav-item">
-                <Link href="/info" className="nav-link">Info</Link>
+                <Link href="/info" className={`nav-link ${pathname === '/info' ? 'active' : pathname === '/' ? 'home-page' : ''}`}>Info</Link>
               </li>
               <li className="nav-item">
-                <Link href="/shop" className="nav-link">Shop</Link>
+                <Link href="/shop" className={`nav-link ${pathname === '/shop' ? 'active' : pathname === '/' ? 'home-page' : ''}`}>Shop</Link>
               </li>
             </ul>
           </nav>

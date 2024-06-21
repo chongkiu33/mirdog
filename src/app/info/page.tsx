@@ -18,13 +18,13 @@ const InfoPage = () => {
         <div id="designcompany" className={styles.designcompany}>
           Introduction of MIR DESIGN from a design company
         </div>
-        <br /><br /><br /><br />
+        <br /><br /><br />
         About the birth of MIR Design
-        <br /><br /><br /><br />
+        <br /><br /><br />
         The origin of MIR Design
-        <br /><br /><br /><br />
+        <br /><br /><br />
         MIR Design concept
-        <br /><br /><br /><br />
+        <br /><br /><br />
         Contact informationContact information
       </div>
     </div>

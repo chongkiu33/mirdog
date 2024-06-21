@@ -1,0 +1,32 @@
+.container {
+    padding: 5% 5%;
+
+  }
+  
+  .imageContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px; /* 间距可以根据需要调整 */
+    justify-items: center;
+  }
+  
+  .imageWrapper {
+    position: relative;
+    width: 300px; /* 可以根据需要调整大小 */
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: calc(10px + 2vmin); /* 随机间距 */
+  }
+  
+  .image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .image:hover{
+    scale: 120%;
+  }
+  
