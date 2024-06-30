@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Activity from './Activity';
 import styles from './Archiv.module.css';
 
@@ -63,6 +63,25 @@ const activities = [
 ];
 
 const Archiv: React.FC = () => {
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      const logo = document.querySelector('.nav-image') as HTMLElement; // 类型断言为 HTMLElement
+      const scrollTop = window.scrollY;
+
+      if (logo) {
+        // 旋转 logo，根据滚动位置设置旋转角度
+        logo.style.transform = `rotate(${scrollTop*0.5}deg)`;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <div className={styles.archiv}>
       {activities.map((activity, index) => (
