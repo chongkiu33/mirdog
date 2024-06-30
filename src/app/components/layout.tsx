@@ -13,24 +13,16 @@ type LayoutProps = {
 };
 
 export default function Layout({ children }: LayoutProps) {
-  const [loading, setLoading] = useState(false); // 表示当前是否处于加载状态
-  const router = useRouter(); // 获取路由对象
-  const pathname = usePathname(); // 获取当前路径名
+  const [loading, setLoading] = useState(true);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleRouteChangeStart = () => setLoading(true);
     const handleRouteChangeComplete = () => setLoading(false);
 
-    // 监听路径变化
-    handleRouteChangeStart(); // 初次加载时设置 loading 状态
-    handleRouteChangeComplete(); // 路由变化完成时重置 loading 状态
-
-    // 模拟加载过程
-    setTimeout(() => {
-      handleRouteChangeComplete();
-    }, 500); // 假设加载过程持续 500ms
-
-  }, [pathname]); // 依赖路径名变化
+    handleRouteChangeStart();
+    handleRouteChangeComplete();
+  }, [pathname]);
 
   useEffect(() => {
     if (pathname !== '/') { // 确保滚动隐藏效果在所有非主页的页面应用
