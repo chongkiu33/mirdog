@@ -24,7 +24,7 @@ const WaterRipple = () => {
         rippleRef.current.appendChild(app.view);
       }
 
-      app.loader.add('background', '/bg.jpg').load((loader: any, resources: any) => {
+      app.loader.add('background', '/bg2.jpg').load((loader: any, resources: any) => {
         const background = new PIXI.Sprite(resources.background.texture);
         background.width = app.screen.width;
         background.height = app.screen.height;
