@@ -13,31 +13,24 @@ type LayoutProps = {
 };
 
 export default function Layout({ children }: LayoutProps) {
-  const [loading, setLoading] = useState(true);
-  const pathname = usePathname();
-  const router = useRouter();
+  const [loading, setLoading] = useState(false); // 表示当前是否处于加载状态
+  const router = useRouter(); // 获取路由对象
+  const pathname = usePathname(); // 获取当前路径名
 
   useEffect(() => {
     const handleRouteChangeStart = () => setLoading(true);
-    const handleRouteChangeComplete = () => {
-      // 延迟执行 setLoading(false)，以确保 Loading 组件处理完播放事件
-      setTimeout(() => setLoading(false), 500);
-    };
+    const handleRouteChangeComplete = () => setLoading(false);
 
-    router.events?.on('routeChangeStart', handleRouteChangeStart);
-    router.events?.on('routeChangeComplete', handleRouteChangeComplete);
-    router.events?.on('routeChangeError', handleRouteChangeComplete);
+    // 监听路径变化
+    handleRouteChangeStart(); // 初次加载时设置 loading 状态
+    handleRouteChangeComplete(); // 路由变化完成时重置 loading 状态
 
-    return () => {
-      router.events?.off('routeChangeStart', handleRouteChangeStart);
-      router.events?.off('routeChangeComplete', handleRouteChangeComplete);
-      router.events?.off('routeChangeError', handleRouteChangeComplete);
-    };
-  }, [pathname]);
+    // 模拟加载过程
+    setTimeout(() => {
+      handleRouteChangeComplete();
+    }, 500); // 假设加载过程持续 500ms
 
-  const handleLoadingComplete = () => {
-    setLoading(false);
-  };
+  }, [pathname]); // 依赖路径名变化
 
   useEffect(() => {
     if (pathname !== '/') { // 确保滚动隐藏效果在所有非主页的页面应用
