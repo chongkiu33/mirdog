@@ -2,35 +2,42 @@
 
 import { useState, useEffect } from 'react';  // React 的 Hooks，用于状态管理和副作用处理
 import { useRouter, usePathname } from 'next/navigation'; // 使用 next/navigation 获取路由和路径名
-import Link from "next/link"; // Link 是 Next.js 的链接组件，用于导航
+import Link from "next/link"; 
 import { ReactNode } from "react";
-import "../globals.css"; // 导入全局CSS样式
+import "../globals.css"; 
 import Image from 'next/image';
-import Loading from './Loading'; // 导入Loading组件
+import Loading from './Loading'; 
 
 type LayoutProps = {
   children: ReactNode;
 };
 
 export default function Layout({ children }: LayoutProps) {
-  const [loading, setLoading] = useState(false); // 表示当前是否处于加载状态
-  const router = useRouter(); // 获取路由对象
-  const pathname = usePathname(); // 获取当前路径名
+  const [loading, setLoading] = useState(true);
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const handleRouteChangeStart = () => setLoading(true);
-    const handleRouteChangeComplete = () => setLoading(false);
+    const handleRouteChangeComplete = () => {
+      // 延迟执行 setLoading(false)，以确保 Loading 组件处理完播放事件
+      setTimeout(() => setLoading(false), 500);
+    };
 
-    // 监听路径变化
-    handleRouteChangeStart(); // 初次加载时设置 loading 状态
-    handleRouteChangeComplete(); // 路由变化完成时重置 loading 状态
+    router.events?.on('routeChangeStart', handleRouteChangeStart);
+    router.events?.on('routeChangeComplete', handleRouteChangeComplete);
+    router.events?.on('routeChangeError', handleRouteChangeComplete);
 
-    // 模拟加载过程
-    setTimeout(() => {
-      handleRouteChangeComplete();
-    }, 500); // 假设加载过程持续 500ms
+    return () => {
+      router.events?.off('routeChangeStart', handleRouteChangeStart);
+      router.events?.off('routeChangeComplete', handleRouteChangeComplete);
+      router.events?.off('routeChangeError', handleRouteChangeComplete);
+    };
+  }, [pathname]);
 
-  }, [pathname]); // 依赖路径名变化
+  const handleLoadingComplete = () => {
+    setLoading(false);
+  };
 
   useEffect(() => {
     if (pathname !== '/') { // 确保滚动隐藏效果在所有非主页的页面应用
