@@ -63,3 +63,17 @@
     margin-bottom: 2em; /* 调整段落的段间距 */
   }
   
+
+
+.videoContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .video {
+    width: 100%;
+     /* 你可以根据需要调整视频的最大宽度 */
+    height: auto;
+  }

@@ -21,7 +21,7 @@ const activities = [
     artistName: "Artist's Name 2",
     tag: "Tag 2",
     imageUrl: "/image/archiv/Art to the Horizon/LitFest22_Motivmathis_beutel_rgb-cut_q.jpg",
-    link: "/archiv/fogotten-fantasy"
+    link: "/archiv/art-to-the-horizon"
   },
   {
     content: "De Paprikabrug",
@@ -30,7 +30,7 @@ const activities = [
     artistName: "Wietske van Leeuwen",
     tag: "Tag 2",
     imageUrl: "/image/archiv/De Paprikabrug/IMG_2164-1536x1152.jpg",
-    link: "/archiv/fogotten-fantasy"
+    link: "/archiv/woven-form"
   },
   {
     content: "WOVEN FORMS",
