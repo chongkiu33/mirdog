@@ -1,45 +1,31 @@
-
-.example { 
-  position:absolute;
-  left: 0%;
-  top: 0%;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  overflow: hidden;
-}
-.example img { 
-  position: absolute;
-  background: #666;
-  overflow: hidden;
-  cursor: pointer;
-  left: 0%;  
-  width: 200px;
-}
-
-#gall {
-
-transform-origin: center center; /* 设置旋转中心为画廊的中心点 */
-transform-style: preserve-3d;
-
-}
-
 .container {
-height: 100%;
-width: 100%;
-display: -moz-box;
-display: -ms-flexbox;
-display: -webkit-flex;
-display: flex;
+  padding: 5% 5%;
 
 }
 
-.ease {
-width: 0px;
-height: 74px;
--webkit-transition: .3s ease;
--moz-transition: .3s ease;
--o-transition: .3s ease;
--ms-transition: .3s ease;
-transition: .3s ease;
+.imageContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px; /* 间距可以根据需要调整 */
+  justify-items: center;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 300px; /* 可以根据需要调整大小 */
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: calc(10px + 2vmin); /* 随机间距 */
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.image:hover{
+  scale: 120%;
 }
