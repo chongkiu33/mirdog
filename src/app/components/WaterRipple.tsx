@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from 'react';
-import * as PIXI from 'js/pixi.min.js';
 import styles from './WaterRipple.module.css';
 
 const WaterRipple = () => {
@@ -10,7 +9,7 @@ const WaterRipple = () => {
   useEffect(() => {
     // 动态加载Pixi.js脚本
     const script = document.createElement('script');
-    script.src = '/js/pixi.min.js';
+    script.src = '/js/pixi.min.js'; // 确保这个路径是正确的
     script.onload = () => {
       // 确保Pixi.js脚本加载完成后进行初始化
       const PIXI = (window as any).PIXI;
@@ -27,13 +26,15 @@ const WaterRipple = () => {
 
       const resize = () => {
         app.renderer.resize(window.innerWidth, window.innerHeight);
-        background.width = window.innerWidth;
-        background.height = window.innerHeight;
+        if (background) {
+          background.width = window.innerWidth;
+          background.height = window.innerHeight;
+        }
       };
 
       window.addEventListener('resize', resize);
 
-      let background: PIXI.Sprite;
+      let background: PIXI.Sprite | null = null; // 允许初始值为 null
 
       app.loader.add('background', '/bg2.jpg').load((loader: any, resources: any) => {
         background = new PIXI.Sprite(resources.background.texture);
