@@ -1,6 +1,10 @@
 "use client";
 
 import { useEffect, useRef } from 'react';
+/*
+useEffect：用于处理副作用
+useRef：用于获取对 DOM 元素的引用
+ */
 
 type LoadingProps = {
   onLoadingComplete: () => void;

@@ -148,23 +148,7 @@ main {
   object-fit: cover;
 }
 
-.mircentered {
-  font-size: 48vw; /* 根据屏幕宽度调整字体大小 */
-  text-align: center;
-  font-family: 'Oppo Sans Heavy', sans-serif;
-  color: #fff;
-  position: absolute;
-  top: -30%; /* 调整此值以将文本向上移动 */
-  width: 100%; /* 使其水平居中对齐 */
-  margin: 0; /* 删除默认外边距 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-  z-index: -1;
-  overflow: hidden;
-  
-}
+
 
 
 

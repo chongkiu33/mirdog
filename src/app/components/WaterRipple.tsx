@@ -1,7 +1,8 @@
-
 "use client";
-import { useEffect, useRef } from 'react';
 
+import { useEffect, useRef } from 'react';
+import * as PIXI from 'js/pixi.min.js';
+import styles from './WaterRipple.module.css';
 
 const WaterRipple = () => {
   const rippleRef = useRef<HTMLDivElement>(null);
@@ -17,15 +18,25 @@ const WaterRipple = () => {
       const app = new PIXI.Application({
         width: window.innerWidth,
         height: window.innerHeight,
-        backgroundColor: 0x1099bb,
+        backgroundColor: 0xFFFFFF, // 将背景颜色改为白色
       });
 
       if (rippleRef.current) {
         rippleRef.current.appendChild(app.view);
       }
 
+      const resize = () => {
+        app.renderer.resize(window.innerWidth, window.innerHeight);
+        background.width = window.innerWidth;
+        background.height = window.innerHeight;
+      };
+
+      window.addEventListener('resize', resize);
+
+      let background: PIXI.Sprite;
+
       app.loader.add('background', '/bg2.jpg').load((loader: any, resources: any) => {
-        const background = new PIXI.Sprite(resources.background.texture);
+        background = new PIXI.Sprite(resources.background.texture);
         background.width = app.screen.width;
         background.height = app.screen.height;
         app.stage.addChild(background);
@@ -53,15 +64,32 @@ const WaterRipple = () => {
           displacementSprite.y = event.clientY - displacementSprite.height / 2;
         });
       });
+
+      // 清理函数
+      return () => {
+        window.removeEventListener('resize', resize);
+        app.destroy(true, { children: true, texture: true, baseTexture: true });
+        if (rippleRef.current) {
+          rippleRef.current.removeChild(app.view);
+        }
+      };
     };
     document.body.appendChild(script);
 
+    // 清理函数
     return () => {
-      script.remove();
+      if (script) {
+        document.body.removeChild(script);
+      }
     };
   }, []);
 
-  return <div ref={rippleRef} style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1 }} />;
+  return (
+    <>
+      <div ref={rippleRef} style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: -1 }} />
+      <img style={{ overflow: 'hidden', position: 'fixed', top: '20%', left: '0%', width: '100%', zIndex: -1 }} src='/mir.png' />
+    </>
+  );
 };
 
 export default WaterRipple;
