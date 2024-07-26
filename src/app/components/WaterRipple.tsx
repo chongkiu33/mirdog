@@ -34,7 +34,7 @@ const WaterRipple = () => {
 
       window.addEventListener('resize', resize);
 
-      let background: PIXI.Sprite | null = null; // 允许初始值为 null
+      let background: any = null; // 使用 any 类型
 
       app.loader.add('background', '/bg2.jpg').load((loader: any, resources: any) => {
         background = new PIXI.Sprite(resources.background.texture);
