@@ -1,5 +1,5 @@
 "use client";
-
+import Image from 'next/image'
 import { useEffect, useRef } from 'react';
 import styles from './WaterRipple.module.css';
 
@@ -88,7 +88,10 @@ const WaterRipple = () => {
   return (
     <>
       <div ref={rippleRef} style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: -1 }} />
-      <img style={{ overflow: 'hidden', position: 'fixed', top: '20%', left: '0%', width: '100%', zIndex: -1 }} src='/mir.png' />
+      <div className={styles.imgContainer}>
+        <Image className={`${styles.logo} ${styles.rotateMobile}`} src="/mir.png" alt="MIR" fill/>
+      </div>
+      
     </>
   );
 };

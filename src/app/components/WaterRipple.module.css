@@ -1,0 +1,29 @@
+
+
+.imgContainer{
+    display: flex;
+    position: 'fixed'; 
+    overflow: hidden;
+    
+}
+
+.logo{
+    object-fit: contain;
+    padding-top: 12vh;
+    transition: all 0.2s ease-in-out;
+}
+
+@media (max-width: 700px) {
+    .rotateMobile {
+      transform: rotate(90deg);
+      padding-top: 0vh;
+      scale: 1.4;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .imgContainer{
+        height: 100%;
+        
+    }
+
+  }
