@@ -89,7 +89,7 @@ const Activity: React.FC<ActivityProps> = ({ content, date, description, artistN
         <Link href={link} className={styles.activityLink}>
             <div className={styles.activity}>
                 <div className={styles.lineWrapper}>
-                    <svg ref={svgRef} id="svg" viewBox="0 0 1400 300">
+                    <svg ref={svgRef} id="svg" viewBox="0 0 1400 300" >
                         <path ref={pathRef} id="curve" d={`M10,150 Q700,150 1390,150`} fill="none" stroke="#000" strokeWidth="2" />
                     </svg>
                 </div>

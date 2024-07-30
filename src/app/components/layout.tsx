@@ -34,6 +34,7 @@ export default function Layout({ children }: LayoutProps) {
         if (scrollTop > 50) { // Adjust the scroll value as needed
           if (logo) {
             logo.classList.add('shrunk');
+            logo.classList.add('move');
           }
           if (links) {
             links.forEach((link, index) => {
@@ -45,6 +46,7 @@ export default function Layout({ children }: LayoutProps) {
         } else {
           if (logo) {
             logo.classList.remove('shrunk');
+            logo.classList.remove('move');
           }
           if (links) {
             links.forEach((link, index) => {

@@ -45,7 +45,7 @@ body {
 .navbar {
   color: white;
   padding: 1rem;
-  position: fixed; /* Fixed position */
+  position: absolute; /* Fixed position */
   top: 0;
   left: 0;
   width: 100%;
@@ -108,13 +108,16 @@ li {
 .nav-image {
   height: 9vw; /* Set the image height */
   width: auto; /* Maintain aspect ratio */
-  transition: height 0.5s ease;
+  transition: all 0.5s ease;
+  scale: 1; 
 }
 
 .nav-image.shrunk {
-  height: 5vw; /* Adjust the size as needed */
-  transition: height 0.5s ease;
+  scale: 0.5; /* Adjust the size as needed */
+  transition: all 0.5s ease;
 }
+
+
 
 .nav-link.hidden {
   opacity: 0;
@@ -158,28 +161,5 @@ main {
   transition: transform 0.5s ease;
 }
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-body {
-  background: #fff;
-}
 
 
