@@ -1,0 +1,33 @@
+.textContainer{
+    display: flex;
+    justify-content: center;
+   padding: 3vh;
+    font-family: 'oppo Sans Heavy';
+    font-size: 3rem;
+    margin-top: 7vh;
+}
+.box{
+    width: 20vw;
+    height: 50vh;
+    color: white;
+    background-color: rgb(216, 216, 216);
+    border-radius: 50px;
+    font-size:3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'oppo Sans Medium';
+}
+
+.box:hover{
+    background-color:black;
+}
+
+.container{
+    width: 100%;
+    
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+}
