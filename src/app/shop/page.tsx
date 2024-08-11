@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styles from './shop.module.css';
 
 export default function Shopping() {
@@ -5,8 +6,8 @@ export default function Shopping() {
       <div className={styles.bigcontainer}>
         <div className={styles.textContainer}>Please Select the region</div>
       <div className={styles.container}>
-        <div className={styles.box}>China</div>
-        <div className={styles.box}>Europe</div>
+        <Link className={styles.box} href="/shop/china">China</Link>
+        <Link className={styles.box} href="/shop/europe">Europe</Link>
       </div>
       </div>
     );

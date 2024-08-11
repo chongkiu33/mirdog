@@ -5,4 +5,11 @@
     margin-top: 30vh;
     
   }
+
+
+.footer{
+  display: flex;
+  
+  justify-content: center;
+}
   

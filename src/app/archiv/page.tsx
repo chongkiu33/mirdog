@@ -3,6 +3,7 @@
 import React, { useEffect } from 'react';
 import Activity from './Activity';
 import styles from './Archiv.module.css';
+import Footer from '../components/footer/footer';
 
 const activities = [
   {
@@ -102,6 +103,9 @@ const Archiv: React.FC = () => {
 
         </>
       ))}
+      <div className={styles.footer}>
+      <Footer />
+      </div>
     </div>
   );
 };
