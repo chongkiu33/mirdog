@@ -48,8 +48,13 @@ const ImgGallery = () => {
 
 export default ImgGallery;
 
+interface ImgItemProps {
+    url: string;
+    position: [number, number, number];
+    scale: [number, number];
+}
 
-function ImgItem({ url, position, scale }: { url: string; position: [number, number, number]; scale: [number, number] }){
+function ImgItem({ url, position, scale }: ImgItemProps){
     const mesh = useRef<THREE.Mesh>(null);
    
     const rotationAngle = useRef(0); // 用于跟踪旋转角度
