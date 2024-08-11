@@ -7,6 +7,8 @@ import { ReactNode } from "react";
 import "../globals.css"; 
 import Image from 'next/image';
 import Loading from './Loading'; 
+import styles from './layout.module.css';
+
 
 type LayoutProps = {
   children: ReactNode;
@@ -27,31 +29,31 @@ export default function Layout({ children }: LayoutProps) {
   useEffect(() => {
     if (pathname !== '/') { // 确保滚动隐藏效果在所有非主页的页面应用
       const handleScroll = () => {
-        const logo = document.querySelector('.nav-image');
-        const links = document.querySelectorAll('.nav-link');
+        const logo = document.querySelector(`.${styles.navImage}`);
+        const links = document.querySelectorAll(`.${styles.navLink}`);
         const scrollTop = window.scrollY;
 
         if (scrollTop > 50) { // Adjust the scroll value as needed
           if (logo) {
-            logo.classList.add('shrunk');
-            logo.classList.add('move');
+            logo.classList.add(styles.shrunk);
+            logo.classList.add(styles.move);
           }
           if (links) {
             links.forEach((link, index) => {
               setTimeout(() => {
-                link.classList.add('hidden');
+                link.classList.add(styles.hidden);
               }, index * 100);
             });
           }
         } else {
           if (logo) {
-            logo.classList.remove('shrunk');
-            logo.classList.remove('move');
+            logo.classList.remove(styles.shrunk);
+            logo.classList.remove(styles.move);
           }
           if (links) {
             links.forEach((link, index) => {
               setTimeout(() => {
-                link.classList.remove('hidden');
+                link.classList.remove(styles.hidden);
               }, index * 100);
             });
           }
@@ -71,25 +73,25 @@ export default function Layout({ children }: LayoutProps) {
       {loading ? (
         <Loading onLoadingComplete={() => setLoading(false)} />
       ) : (
-        <div>
-          <nav className="navbar">
-            <ul className="nav-list">
-              <li className="nav-item logo-item">
+        <div >
+          <nav className={styles.navbar}>
+            <ul className={styles.navList}>
+              <li className={`${styles.navItem} ${styles.logoItem}`}>
                 <Link href="/">
-                  <Image src="/logo.svg" alt="Home" width={50} height={50} className="nav-image" />
+                  <Image src="/logo.svg" alt="Home" width={50} height={50} className={styles.navImage} />
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link href="/archiv" className={`nav-link ${pathname === '/archiv' ? 'active' : pathname === '/' ? 'home-page' : ''}`}>Archiv</Link>
+              <li className={styles.navItem}>
+                <Link href="/archiv" className={`${styles.navLink} ${pathname === '/archiv' ? styles.active : pathname === '/' ? styles.homePage : ''}`}>Archiv</Link>
               </li>
-              <li className="nav-item">
-                <Link href="/object" className={`nav-link ${pathname === '/object' ? 'active' : pathname === '/' ? 'home-page' : ''}`}>Object</Link>
+              <li className={styles.navItem}>
+                <Link href="/object" className={`${styles.navLink} ${pathname === '/object' ? styles.active : pathname === '/' ? styles.homePage : ''}`}>Object</Link>
               </li>
-              <li className="nav-item">
-                <Link href="/info" className={`nav-link ${pathname === '/info' ? 'active' : pathname === '/' ? 'home-page' : ''}`}>Info</Link>
+              <li className={styles.navItem}>
+                <Link href="/info" className={`${styles.navLink} ${pathname === '/info' ? styles.active : pathname === '/' ? styles.homePage  : ''}`}>Info</Link>
               </li>
-              <li className="nav-item">
-                <Link href="/shop" className={`nav-link ${pathname === '/shop' ? 'active' : pathname === '/' ? 'home-page' : ''}`}>Shop</Link>
+              <li className={styles.navItem}>
+                <Link href="/shop" className={`${styles.navLink} ${pathname === '/shop' ? styles.active : pathname === '/' ? styles.homePage  : ''}`}>Shop</Link>
               </li>
             </ul>
           </nav>

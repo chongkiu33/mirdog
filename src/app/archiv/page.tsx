@@ -66,7 +66,7 @@ const Archiv: React.FC = () => {
   
   useEffect(() => {
     const handleScroll = () => {
-      const logo = document.querySelector('.nav-image') as HTMLElement; // 类型断言为 HTMLElement
+      const logo = document.querySelector(`.${styles.navImage}`) as HTMLElement; // 类型断言为 HTMLElement
       const scrollTop = window.scrollY;
 
       if (logo) {

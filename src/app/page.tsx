@@ -2,11 +2,12 @@
 import Image from "next/image";
 import WaterRipple from './components/WaterRipple';
 import { useEffect } from 'react';
+import styles from './components/layout.module.css'
 
 export default function Home() {
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
-      const logo = document.querySelector('.nav-image') as HTMLElement;
+      const logo = document.querySelector(`.${styles.navImage}`) as HTMLElement;
       if (logo) {
         const { clientX } = event;
         const { innerWidth } = window;
