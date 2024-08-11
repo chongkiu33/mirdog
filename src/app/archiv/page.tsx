@@ -64,23 +64,23 @@ const activities = [
 
 const Archiv: React.FC = () => {
   
-  useEffect(() => {
-    const handleScroll = () => {
-      const logo = document.querySelector(`.${styles.navImage}`) as HTMLElement; // 类型断言为 HTMLElement
-      const scrollTop = window.scrollY;
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const logo = document.querySelector(`.${styles.navImage}`) as HTMLElement; // 类型断言为 HTMLElement
+  //     const scrollTop = window.scrollY;
 
-      if (logo) {
-        // 旋转 logo，根据滚动位置设置旋转角度
-        logo.style.transform = `rotate(${scrollTop*0.5}deg)`;
-      }
-    };
+  //     if (logo) {
+  //       // 旋转 logo，根据滚动位置设置旋转角度
+  //       logo.style.transform = `rotate(${scrollTop*0.5}deg)`;
+  //     }
+  //   };
 
-    window.addEventListener('scroll', handleScroll);
+  //   window.addEventListener('scroll', handleScroll);
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, []);
 
   return (
     <div className={styles.archiv}>

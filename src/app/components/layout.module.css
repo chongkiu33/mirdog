@@ -26,6 +26,7 @@
 
   .logoItem {
     flex: 0 0 auto; /* Logo item should not flex */
+    transition: all 0.5s ease;
   }
 
   .navLink {
@@ -63,13 +64,16 @@
     height: 9vw; /* Set the image height */
     width: auto; /* Maintain aspect ratio */
     transition: all 0.5s ease;
-    scale: 1; 
+   
   }
 
-  .navImage.shrunk {
-    scale: 0.5; /* Adjust the size as needed */
+  .logoItem.shrunk {
+    transform: scale(0.5) translate(-40%, -40%); /* Adjust the size as needed */
     transition: all 0.5s ease;
+    transform-origin: center;
   }
+
+ 
 
   .navLink.hidden{
     opacity: 0;

@@ -76,7 +76,7 @@ function ImgItem({ url, position, scale }: { url: string; position: any; scale: 
 
     return(
        
-        <mesh  >
+        <mesh >
             <Image ref={mesh} url={url} position={position} scale={scale}  toneMapped={false} /> 
         </mesh>
 

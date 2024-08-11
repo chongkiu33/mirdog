@@ -17,6 +17,7 @@ type LayoutProps = {
 export default function Layout({ children }: LayoutProps) {
   const [loading, setLoading] = useState(true);
   const pathname = usePathname();
+  const [mouseY, setMouseY] = useState(0);
 
   useEffect(() => {
     const handleRouteChangeStart = () => setLoading(true);
@@ -29,14 +30,15 @@ export default function Layout({ children }: LayoutProps) {
   useEffect(() => {
     if (pathname !== '/') { // 确保滚动隐藏效果在所有非主页的页面应用
       const handleScroll = () => {
-        const logo = document.querySelector(`.${styles.navImage}`);
+        const logo = document.querySelector(`.${styles.logoItem}`);
         const links = document.querySelectorAll(`.${styles.navLink}`);
         const scrollTop = window.scrollY;
+        const logo2 = document.querySelector(`.${styles.navImage}`)  as HTMLImageElement;
 
         if (scrollTop > 50) { // Adjust the scroll value as needed
           if (logo) {
             logo.classList.add(styles.shrunk);
-            logo.classList.add(styles.move);
+            logo2.style.transform = `rotate(${scrollTop*0.5}deg)`;
           }
           if (links) {
             links.forEach((link, index) => {
@@ -48,7 +50,7 @@ export default function Layout({ children }: LayoutProps) {
         } else {
           if (logo) {
             logo.classList.remove(styles.shrunk);
-            logo.classList.remove(styles.move);
+            
           }
           if (links) {
             links.forEach((link, index) => {
@@ -58,15 +60,64 @@ export default function Layout({ children }: LayoutProps) {
             });
           }
         }
+
+      
+
       };
 
+
       window.addEventListener('scroll', handleScroll);
+      
 
       return () => {
         window.removeEventListener('scroll', handleScroll);
+       
       };
     }
   }, [pathname]);
+
+  useEffect(() => {
+    if (pathname === '/object') { // 替换为您需要应用此效果的页面路径
+        const handleMouseMove = (event: MouseEvent) => {
+            setMouseY(event.clientY);
+            const logo = document.querySelector(`.${styles.logoItem}`);
+            const links = document.querySelectorAll(`.${styles.navLink}`);
+            const scrollTop = window.scrollY;
+
+            if (event.clientY > 150) { // 调整为需要的鼠标高度
+              if (logo) {
+                logo.classList.add(styles.shrunk);
+                logo.classList.add(styles.move);
+              } // 隐藏 logo 和链接
+              if (links) {
+                links.forEach((link, index) => {
+                  setTimeout(() => {
+                    link.classList.add(styles.hidden);
+                  }, index * 100);
+                });
+              }
+            } else {
+              if (logo) {
+                logo.classList.remove(styles.shrunk);
+                logo.classList.remove(styles.move);
+              }
+              if (links) {
+                links.forEach((link, index) => {
+                  setTimeout(() => {
+                    link.classList.remove(styles.hidden);
+                  }, index * 100);
+                });
+              }
+            }
+        };
+
+        window.addEventListener('mousemove', handleMouseMove);
+
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove);
+        };
+    }
+}, [pathname]);
 
   return (
     <>
