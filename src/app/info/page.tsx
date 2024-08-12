@@ -14,8 +14,8 @@ const InfoPage = () => {
           <Image className={styles.logo} src="/logo.png" alt="logo" width={500} height={500} />
         </div>
         <div className={styles.contactContainer}>
-        <Link href="/">Email</Link>
-        <Link href="/">Instagram</Link>
+        <Link href="/">——&gt;Email</Link>
+        <Link href="/">——&gt;Instagram</Link>
         </div>
       </div>
 
@@ -32,7 +32,7 @@ const InfoPage = () => {
             <div>
             <div className={styles.subTitle}>MIR Art concept</div>
             <p>
-            Sustainability is at the core of our philosophy. We advocate the use of environmentally friendly materials and innovative technologies in our projects to ensure that our pursuit of artistic expression does not come at the expense of the planet's environment. At the same time, we encourage artists to make breakthroughs in new media and new technologies, keeping Mir at the forefront of artistic innovation.
+            Sustainability is at the core of our philosophy. We advocate the use of environmentally friendly materials and innovative technologies in our projects to ensure that our pursuit of artistic expression does not come at the expense of the planet&rsquo;s environment. At the same time, we encourage artists to make breakthroughs in new media and new technologies, keeping Mir at the forefront of artistic innovation.
             </p>
             </div>
             <div>
