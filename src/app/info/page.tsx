@@ -14,8 +14,8 @@ const InfoPage = () => {
           <Image className={styles.logo} src="/logo.png" alt="logo" width={500} height={500} />
         </div>
         <div className={styles.contactContainer}>
-        <Link href="/">——&gt;Email</Link>
-        <Link href="/">——&gt;Instagram</Link>
+        <Link href="/">Email</Link>
+        <Link href="/">Instagram</Link>
         </div>
       </div>
 
