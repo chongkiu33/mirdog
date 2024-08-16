@@ -33,7 +33,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-  
+    font-family: 'oppo Sans medium';
 }
 
 @layer utilities {

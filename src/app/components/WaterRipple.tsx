@@ -88,9 +88,12 @@ const WaterRipple = () => {
   return (
     <>
       <div ref={rippleRef} style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: -1 }} />
-      <div className={styles.imgContainer}>
-        <Image className={`${styles.logo} ${styles.rotateMobile}`} src="/mir.png" alt="MIR" fill/>
+      <div className={styles.textContainer1}>
+        <div className={styles.text1}>MIR</div>
       </div>
+      {/* <div className={styles.textContainer2}>
+        <div className={styles.text2}>MIR</div>
+      </div> */}
       
     </>
   );

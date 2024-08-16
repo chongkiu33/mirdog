@@ -1,9 +1,12 @@
+.bigContainer{
+  width: 90%;
+  margin-left: 5%;
+}
 .container{
   display: flex;
  
   margin-top: 17vw;
-  width: 90%;
-  margin-left: 5%;
+  
   gap: 50px;
   
   

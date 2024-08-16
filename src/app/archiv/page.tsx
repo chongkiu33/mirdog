@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect } from 'react';
-import Activity from './Activity';
+import Activity from '../components/activity/Activity';
 import styles from './Archiv.module.css';
 import Footer from '../components/footer/footer';
 

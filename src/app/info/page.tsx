@@ -4,9 +4,11 @@ import React from 'react';
 import Image from 'next/image';
 import styles from './info.module.css'; // 使用CSS模块
 import Link from 'next/link';
+import Footer from '../components/footer/footer';
 
 const InfoPage = () => {
   return (
+    <div className={styles.bigContainer}>
     <div  className={styles.container}>
 
       <div className={styles.imgContact}>
@@ -45,6 +47,9 @@ const InfoPage = () => {
           
         </div>
       </div>
+      
+    </div>
+    <Footer />
     </div>
   );
 };

@@ -44,18 +44,19 @@ export default function Layout({ children }: LayoutProps) {
             links.forEach((link, index) => {
               setTimeout(() => {
                 link.classList.add(styles.hidden);
+                link.classList.remove(styles.showing);
               }, index * 100);
             });
           }
         } else {
           if (logo) {
             logo.classList.remove(styles.shrunk);
-            
           }
           if (links) {
             links.forEach((link, index) => {
               setTimeout(() => {
                 link.classList.remove(styles.hidden);
+                link.classList.add(styles.showing);
               }, index * 100);
             });
           }
@@ -93,6 +94,7 @@ export default function Layout({ children }: LayoutProps) {
                 links.forEach((link, index) => {
                   setTimeout(() => {
                     link.classList.add(styles.hidden);
+                    link.classList.remove(styles.showing);
                   }, index * 100);
                 });
               }
@@ -105,6 +107,7 @@ export default function Layout({ children }: LayoutProps) {
                 links.forEach((link, index) => {
                   setTimeout(() => {
                     link.classList.remove(styles.hidden);
+                    link.classList.add(styles.showing);
                   }, index * 100);
                 });
               }

@@ -22,49 +22,63 @@ const Activity: React.FC<ActivityProps> = ({ content, date, description, artistN
     const mousePos = useRef<{ y: number }>({ y: 0 });
     const connected = useRef<boolean>(false);
     const tweening = useRef<boolean>(false);
+
+    const svgWidth = window.innerWidth; // 90vw 的像素值
+    const viewBoxValue = `0 0 ${svgWidth} 300`;
+    
     
     useEffect(() => {
         const svgElement = svgRef.current;
         const path = pathRef.current;
-
-        const updateCurve = () => {
-            const y = mousePos.current.y - (150 - mousePos.current.y) * 1.1;
-            if (Math.abs(150 - y) > 100) {
-                connected.current = false;
+    
+        // 锁定 svgWidth 为固定值
+        const svgWidth = window.innerWidth; // 90vw 的像素值
+        const viewBoxValue = `0 0 ${svgWidth} 150`;
+    
+        // 设置 viewBox 以确保一致性
+        if (svgElement) {
+            svgElement.setAttribute('viewBox', viewBoxValue);
+        }
+    
+        const updateDimensions = () => {
+            const y = mousePos.current.y*1 - 75*0.5 ;
+    
+            if (Math.abs(75 - y) > 75) {
+                //connected.current = false;
                 tweening.current = true;
-                if (svgElement) svgElement.style.cursor = 'default';
+                //if (svgElement) svgElement.style.cursor = 'default';
                 snapBack(y);
             } else {
-                if (path) path.setAttribute('d', `M10,150 Q${svgElement!.clientWidth / 2},${y} ${svgElement!.clientWidth - 10},150`);
+                if (path) path.setAttribute('d', `M5,75 Q${svgWidth / 2},${y} ${svgWidth},75`);
             }
         };
-
+    
         const snapBack = (y: number) => {
-            const tween = new Tween({ y })
-                .to({ y: 150 }, 800)
+            const tween = new Tween({ y})
+                .to({ y: 75 }, 800)
                 .easing(Easing.Elastic.Out)
                 .onUpdate(({ y }) => {
-                    if (path) path.setAttribute('d', `M10,150 Q${svgElement!.clientWidth / 2},${y} ${svgElement!.clientWidth - 10},150`);
+                    if (path) path.setAttribute('d', `M5,75 Q${svgWidth / 2},${y} ${svgWidth},75`);
                 })
                 .onComplete(() => {
                     tweening.current = false;
                 })
                 .start();
         };
-
+    
         const loop = (time: number) => {
-            if (connected.current) updateCurve();
+            if (connected.current) updateDimensions();
             tweenUpdate(time);
             requestAnimationFrame(loop);
         };
-
+    
         const mouseMoveHandler = (e: MouseEvent) => {
             if (svgElement) {
                 const rect = svgElement.getBoundingClientRect();
                 mousePos.current.y = e.clientY - rect.top;
             }
         };
-
+    
         const mouseOverHandler = () => {
             if (!connected.current && !tweening.current) {
                 connected.current = true;
@@ -72,26 +86,39 @@ const Activity: React.FC<ActivityProps> = ({ content, date, description, artistN
             }
         };
 
+        const mouseLeaveHandler = () => {
+            if (connected.current) {
+                connected.current = false;
+                if (svgElement) svgElement.style.cursor = 'default';
+            }
+        };
+    
         window.addEventListener('mousemove', mouseMoveHandler);
-        path?.addEventListener('mouseover', mouseOverHandler);
-
+        svgElement?.addEventListener('mouseover', mouseOverHandler);
+        svgElement?.addEventListener('mouseleave', mouseLeaveHandler);
+    
         loop(0);
-
+    
         return () => {
             window.removeEventListener('mousemove', mouseMoveHandler);
-            if (path) {
-                path.removeEventListener('mouseover', mouseOverHandler);
+            if (svgElement) {
+                svgElement.removeEventListener('mouseover', mouseOverHandler);
+                svgElement.removeEventListener('mouseleave', mouseLeaveHandler);
             }
         };
     }, []);
+    
+    
+
+   
 
     return (
         <Link href={link} className={styles.activityLink}>
             <div className={styles.activity}>
                 <div className={styles.lineWrapper}>
-                    <svg ref={svgRef} id="svg" viewBox="0 0 1400 300" >
-                        <path ref={pathRef} id="curve" d={`M10,150 Q700,150 1390,150`} fill="none" stroke="#000" strokeWidth="2" />
-                    </svg>
+                <svg ref={svgRef} className={styles.svg} viewBox={viewBoxValue}>
+                    <path ref={pathRef} id="curve" d={`M5,75 Q${svgWidth / 2},75 ${svgWidth},75`} fill="none" stroke="#000" strokeWidth="2" />
+                </svg>  
                 </div>
                 <div className={styles.activityContent}>
                     <div className={styles.activityHeader}>

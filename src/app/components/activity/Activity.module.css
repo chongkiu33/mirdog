@@ -7,7 +7,7 @@
   }
   
   .lineWrapper {
-    width: 90%; /* 设置lineWrapper宽度为屏幕的90% */
+    width: 100%; /* 设置lineWrapper宽度为屏幕的90% */
     display: flex;
     justify-content: center;
    position: absolute;
@@ -16,13 +16,15 @@
     
 }
 
-#svg {
-    width: 100%; /* 设置SVG宽度为lineWrapper的宽度 */
-    height: 50px; /* 设定高度，可以根据需要调整 */
+.svg {
+    width: 90%;  /*设置SVG宽度为lineWrapper的宽度 */
+    height: 150px;  /*设定高度，可以根据需要调整 */
     position: relative;
     z-index: 10;
     cursor: arrow;
 }
+
+
 
 .svgLine {
   width: 100%;
@@ -63,7 +65,7 @@
   
   .activityDescription p {
     margin: 0;
-    font-size: 16px; /* 调整描述字体大小 */
+    font-size: 1.2vw; /* 调整描述字体大小 */
     
   }
   
