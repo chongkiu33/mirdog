@@ -39,7 +39,7 @@ const ImgGallery = () => {
                 <OrbitControls minDistance={1} maxDistance={10} />
                 
                 {images.map((image, index) => (
-          <ImgItem key={index} {...image} />
+          <ImgItem key={image.url} {...image} />
         ))}
             </Canvas>
         </div>
