@@ -8,9 +8,8 @@ import { OrbitControls } from '@react-three/drei';
 import {Image} from '@react-three/drei';
 
 
-
 const images = [
-    { position: [3.3, 1.3, 0.3], url: "/image/gif/1.gif",scale: [1, 0.75]},
+    { position: [3.3, 1.3, 0.3], url: "/image/png/1.png",scale: [1, 0.75]},
     { position: [-0.5, -1.8, 1],  url: "/image/png/2.png", scale: [1, 1*1.5]},
     { position: [1.4, -0.4, 2], url: "/image/png/3.png" , scale: [1, 0.65]},
     { position: [-2.5, 1.7, 1], url: "/image/png/4.png" , scale: [1, 1.5]},
@@ -29,7 +28,7 @@ const images = [
     { position: [-2, -1.2, -2], url: "/image/png/17.png",scale: [1, 1*1.5]},
     { position: [-0.1, 0.1, 1], url: "/image/png/18.png",scale: [1, 1]},
     { position: [-0.8, 2.3, -1], url: "/image/png/19.png",scale: [1, 1*1.5]},
-    { position: [0.5, 1.3, -0.5], url: "/image/png/20.png",scale: [0.6, 0.6*1.29]},
+    { position: [0.5, 1.3, -0.5], url: "/image/png/20.pngg",scale: [0.6, 0.6*1.29]},
   ]
 
 const ImgGallery = () => {
