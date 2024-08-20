@@ -28,7 +28,7 @@ const images = [
     { position: [-2, -1.2, -2], url: "/image/png/17.png",scale: [1, 1*1.5]},
     { position: [-0.1, 0.1, 1], url: "/image/png/18.png",scale: [1, 1]},
     { position: [-0.8, 2.3, -1], url: "/image/png/19.png",scale: [1, 1*1.5]},
-    { position: [0.5, 1.3, -0.5], url: "/image/png/20.pngg",scale: [0.6, 0.6*1.29]},
+    { position: [0.5, 1.3, -0.5], url: "/image/png/20.png",scale: [0.6, 0.6*1.29]},
   ]
 
 const ImgGallery = () => {
