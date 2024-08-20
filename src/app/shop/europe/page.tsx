@@ -107,7 +107,7 @@ export default function Shopping() {
         <div className={styles.productContainer}>
             
             {products.map((product, index) => (
-                <div className={styles.product}>
+                <div className={styles.product} key={product.image}>
                 <Product 
                 key={index}
                 price={product.price} 
