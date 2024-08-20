@@ -42,7 +42,7 @@ const InfoPage = () => {
             <p>
             +86 19117237689
             </p>
-
+            <video className={styles.video} src="/videos/china.mp4" ></video>
             </div>
           
         </div>

@@ -1,5 +1,6 @@
 .container{
     margin-top: 17vh;
+    font-family: 'oppo Sans Medium';
 }
 
 .material.type.artist{
@@ -26,6 +27,7 @@
     justify-content: center;
     padding: 5vmin;
     margin-bottom: 3vmin;
+    
 }
 
 .material:hover .textContent,
@@ -40,7 +42,10 @@
 .textContent{
     display: none; /* 默认隐藏 */
     width: 7vw;
-   
+    color: gray;
+}
+.textContent:hover{
+    color: black;
 }
 
 .productContainer{
@@ -51,9 +56,14 @@
 }
 
 .product{
-    width: 20vw;
-    height: 20vw;
+    width: 21vw;
+    height: 21vw;
     position: relative;
+}
+
+.footer{
+    width: 90vw;
+    margin-left: 5vw;
 }
 
 
@@ -71,3 +81,4 @@
         position: relative;
     }
 }
+

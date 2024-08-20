@@ -10,9 +10,10 @@
 }
 
 .text1{
-    
-    font-size: 55vw;
+    padding-top: 5vmax;
+    font-size: 50vw;
     color: #fff;
+    font-family: 'oppo Sans Heavy';
    
 }
 
@@ -23,7 +24,7 @@
 @media (max-width: 700px) {
   
     .text1{
-        font-size: 450px;
+        font-size: 420px;
         writing-mode: vertical-lr;
         transition: all 0.5s ease-in-out;
     }

@@ -8,27 +8,28 @@ import { OrbitControls } from '@react-three/drei';
 import {Image} from '@react-three/drei';
 
 
+
 const images = [
-    { position: [3.3, 1.3, 0.3], url: "/image/20object/pic1.jpg",scale: [1, 0.75]},
-    { position: [-0.5, -1.8, 1],  url: "/image/20object/pic2.jpg", scale: [1, 1*1.5]},
-    { position: [1.4, -0.4, 2], url: "/image/20object/pic3.jpg" , scale: [1, 0.65]},
-    { position: [-2.5, 1.7, 1], url: "/image/20object/pic4.jpg" , scale: [1, 1.5]},
-    { position: [-3.7, 0.4, 1], url: "/image/20object/pic5.jpg",scale: [1, 1.5]},
-    { position: [2.2, 0.8, 0.1], url: "/image/20object/pic6.jpg",scale: [0.8, 0.8*0.8]},
-    { position: [2, 0, -1.5], url: "/image/20object/pic7.jpg",scale: [1, 0.67]},
-    { position: [3.8, -1.5, 0], url: "/image/20object/pic8.jpg",scale: [1, 1]},
-    { position: [-1.6, 0.7, 0.5], url: "/image/20object/pic9.jpg",scale: [1, 1.25]},
-    { position: [2.3, -2.3, 0], url: "/image/20object/pic10.jpg",scale: [1, 1*1.25]},
-    { position: [-2.4, -1.6, 0], url: "/image/20object/pic11.jpg",scale: [1, 1*1.24]},
-    { position: [1.4, -2.2, -1.5], url: "/image/20object/pic12.jpg",scale: [1, 1*1.15]},
-    { position: [4.2, 0, 0], url: "/image/20object/pic13.jpg",scale: [1.3, 1.3*0.69]},
-    { position: [-3.5, 0.5, 0], url: "/image/20object/pic14.jpg",scale: [0.6, 0.6*1.33]},
-    { position: [1.1, 1.6, 1.7], url: "/image/20object/pic15.jpg",scale: [1, 1*1.5]},
-    { position: [-2.9, -0.7, 0.9], url: "/image/20object/pic16.jpg",scale: [0.9, 0.9*1.5]},
-    { position: [-2, -1.2, -2], url: "/image/20object/pic17.jpg",scale: [1, 1*1.5]},
-    { position: [-0.1, 0.1, 1], url: "/image/20object/pic18.jpg",scale: [1, 1]},
-    { position: [-0.8, 2.3, -1], url: "/image/20object/pic19.jpg",scale: [1, 1*1.5]},
-    { position: [0.5, 1.3, -0.5], url: "/image/20object/pic20.jpg",scale: [0.6, 0.6*1.29]},
+    { position: [3.3, 1.3, 0.3], url: "/image/gif/1.gif",scale: [1, 0.75]},
+    { position: [-0.5, -1.8, 1],  url: "/image/png/2.png", scale: [1, 1*1.5]},
+    { position: [1.4, -0.4, 2], url: "/image/png/3.png" , scale: [1, 0.65]},
+    { position: [-2.5, 1.7, 1], url: "/image/png/4.png" , scale: [1, 1.5]},
+    { position: [-3.7, 0.4, 1], url: "/image/png/5.png",scale: [1, 1.5]},
+    { position: [2.2, 0.8, 0.1], url: "/image/png/6.png",scale: [0.8, 0.8*0.8]},
+    { position: [2, 0, -1.5], url: "/image/png/7.png",scale: [1, 0.67]},
+    { position: [3.8, -1.5, 0], url: "/image/png/8.png",scale: [1, 1]},
+    { position: [-1.6, 0.7, 0.5], url: "/image/png/9.png",scale: [1, 1.25]},
+    { position: [2.3, -2.3, 0], url: "/image/png/10.png",scale: [1, 1*1.25]},
+    { position: [-2.4, -1.6, 0], url: "/image/png/11.png",scale: [1, 1*1.24]},
+    { position: [1.4, -2.2, -1.5], url: "/image/png/12.png",scale: [1, 1*1.15]},
+    { position: [4.2, 0, 0], url: "/image/png/13.png",scale: [1.3, 1.3*0.69]},
+    { position: [-3.5, 0.5, 0], url: "/image/png/14.png",scale: [0.6, 0.6*1.33]},
+    { position: [1.1, 1.6, 1.7], url: "/image/png/15.png",scale: [1, 1*1.5]},
+    { position: [-2.9, -0.7, 0.9], url: "/image/png/16.png",scale: [0.9, 0.9*1.5]},
+    { position: [-2, -1.2, -2], url: "/image/png/17.png",scale: [1, 1*1.5]},
+    { position: [-0.1, 0.1, 1], url: "/image/png/18.png",scale: [1, 1]},
+    { position: [-0.8, 2.3, -1], url: "/image/png/19.png",scale: [1, 1*1.5]},
+    { position: [0.5, 1.3, -0.5], url: "/image/png/20.png",scale: [0.6, 0.6*1.29]},
   ]
 
 const ImgGallery = () => {
@@ -78,10 +79,10 @@ function ImgItem({ url, position, scale }: { url: string; position: any; scale: 
 
     return(
        
-        <mesh >
+        <mesh>
             <Image  ref={mesh} onPointerOver={() => setHovered(true)} // 当鼠标悬停时触发
             onPointerOut={() => setHovered(false)} // 当鼠标移出时触发
-            url={url} position={position} scale={scale}  toneMapped={false} /> 
+            url={url} position={position} scale={scale}  toneMapped={false} transparent={true} /> 
         </mesh>
  
     )
