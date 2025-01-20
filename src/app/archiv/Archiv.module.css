@@ -1,0 +1,34 @@
+.archiv {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 17vw;
+  justify-content: center;
+ align-items: center; 
+}
+
+
+.footer{
+display: flex;
+
+justify-content: center;
+align-items: center;
+width: 90%;
+}
+
+.activities{
+width: 90%;
+}
+
+.activities svg{
+position: absolute;
+}
+
+
+@media (max-width: 763px) {
+.archiv {
+  gap: 50px;
+  margin-top: 22vw;
+}
+}
+  

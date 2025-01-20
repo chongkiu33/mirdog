@@ -1,7 +1,7 @@
 'use client';
 
 // src/app/info/page.tsx
-import axios from "axios";
+import api from '../lib/api'; 
 import React from 'react';
 import { useEffect, useState } from "react";
 import Image from 'next/image';
@@ -23,12 +23,7 @@ const InfoPage = () => {
       const fetchData = async () => {
           try {
               // 请求 API 获取数据
-              const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/info`, 
-                {
-                headers: {
-                  Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
-                }}
-              );
+              const response = await api.get(`/info`);
               // console.log('API Response:', response.data.data);
               const info=response.data.data;
               // console.log('Fetched Infos:', info);
