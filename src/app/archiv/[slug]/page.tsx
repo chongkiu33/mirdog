@@ -1,42 +1,58 @@
 "use client"
-import axios from "axios";
+
 import React, { useEffect, useState } from "react";
+import { getArchivBySlug } from "../../lib/ApiService";
+import { useRouter } from "next/navigation";
+import { ArchivPost } from "../../lib/types";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-const archivPage = () => {
-  const [content, setContent] = useState("");
+
+const ArchivPage = ({ params }: { params: { slug: string } }) => {
+  const { slug } = params;
+  const [archiv, setArchiv] = useState<ArchivPost | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const router = useRouter();
 
   useEffect(() => {
-    // 假设从 Strapi 获取数据
-    const fetchData = async () => {
-        try{
-            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/archivs/fgpiu4ztbb7zfy8i09mbbvr7`,           
-        {
-          headers: {
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
-         }}
-        );
-      const data = await response.data.data;
-      setContent(data.Content); // 假设 `content` 包含了 markdown 格式的内容
-      console.log('API Response:', data.Content);
-    }catch (err) {
+    const fetchArchiv = async () => {
+      if (slug) {
+        try {
+          // Fetch the post using the slug
+          const fetchedArchiv = await getArchivBySlug(slug);
+          setArchiv(fetchedArchiv);
+        } catch (err) {
+          setError("Error fetching Archiv.");
           console.log(err);
-         }
-      };
+        } 
+        finally {
+          setLoading(false);
+        }
+      }
+    };
 
-      fetchData();
-    }, []);
+    fetchArchiv();
+  }, [slug]);
 
-
+  if (error) return <p>Error: {error}</p>;
+  if (!archiv) return <p>No archiv found.</p>;
+  
   return (
-    <div className="content-container">
-      {/* 使用 react-markdown 渲染 markdown */}
-      <ReactMarkdown remarkPlugins={[remarkGfm]}>
-        {content}
-      </ReactMarkdown>
-    </div>
-  );
-};
+    <div>
 
-export default archivPage;
+    {!loading && !error && (
+        <>
+      <ReactMarkdown remarkPlugins={[remarkGfm]}>
+        {archiv.content}
+      </ReactMarkdown>
+      </>
+      )}
+    </div>
+
+
+  );
+}
+
+
+export default ArchivPage;

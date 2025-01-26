@@ -1,15 +1,15 @@
 "use client";
 
-import api from '../lib/api'; 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect , useState , Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
-// import Activity from '../components/activity/Activity';
-// import styles from './Archiv.module.css';
-// import Footer from '../components/footer/footer';
-import Link from 'next/link';
+import Activity from '../components/activity/Activity';
+import styles from './Archiv.module.css';
+import Footer from '../components/footer/footer';
 import { ArchivPost } from "../lib/types";
 import { getAllArchivs } from "../lib/ApiService";
-import Pagination from "../components/Pagination";
+import Pagination from "../components/Pagination"
+
+
 
 // const activities = [
 //   {
@@ -66,32 +66,15 @@ import Pagination from "../components/Pagination";
 //     imageUrl: "/image/archiv/Where to go at the weekend/016c55608e850511013e3b7d36d17b.jpg@1280w_1l_2o_100sh.jpg",
 //     link: "/archiv/fogotten-fantasy"
 //   }
-//   // 添加更多活动对象
+  
 // ];
 
 // const Archiv: React.FC = () => {
-//   const [activities, setActivities] = useState([]);
   
-//   // useEffect(() => {
-//   //   const handleScroll = () => {
-//   //     const logo = document.querySelector(`.${styles.navImage}`) as HTMLElement; // 类型断言为 HTMLElement
-//   //     const scrollTop = window.scrollY;
-
-//   //     if (logo) {
-//   //       // 旋转 logo，根据滚动位置设置旋转角度
-//   //       logo.style.transform = `rotate(${scrollTop*0.5}deg)`;
-//   //     }
-//   //   };
-
-//   //   window.addEventListener('scroll', handleScroll);
-
-//   //   return () => {
-//   //     window.removeEventListener('scroll', handleScroll);
-//   //   };
-//   // }, []);
 
 //   return (
 //     <div className={styles.archiv}>
+
 //       {activities.map((activity, index) => (
 //         <>
 //         <Activity
@@ -102,17 +85,16 @@ import Pagination from "../components/Pagination";
 //           artistName={activity.artistName}
 //           tag={activity.tag}
 //           imageUrl={activity.imageUrl}
-//           link={activity.link}
+//           link={`/archiv/${activity.content.replace(/\s+/g,'-').toLowerCase()}`}
 //         />
-        
-        
-
 
 //         </>
 //       ))}
+         
 //       <div className={styles.footer}>
 //       <Footer />
 //       </div>
+     
 //     </div>
 //   );
 // };
@@ -120,8 +102,7 @@ import Pagination from "../components/Pagination";
 // export default Archiv;
 
 
-
-export default function Archiv() {
+function Archivs(){
   const [archivs, setArchivs] = useState<ArchivPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -144,7 +125,8 @@ export default function Archiv() {
       } catch (error) {
         setError("Error fetching archivs.");
         console.error("Error fetching archivs:", error);
-      } finally {
+      } 
+      finally {
         setLoading(false);
       }
     };
@@ -161,6 +143,7 @@ export default function Archiv() {
   };
 
   return (
+    
     <div>
       {/* {loading && (
         <div className="w-full flex items-center justify-center">
@@ -171,48 +154,62 @@ export default function Archiv() {
 
       {!loading && !error && (
         <>
-          <div>
+          <div className={styles.archiv}>
             {archivs.length > 0 ? (
               archivs.map((archiv) => (
+
                 <div
                   key={archiv.id}
                 >
-                  <Link href={`/archivs/${archiv.slug}`}>
-                    {archiv.cover && (
-                      <div>
-                        <img
-                          src={archiv.cover}
-                          alt={archiv.title}
-                        />
-                      </div>
-                    )}
-                    <div>
-                      <h2>
-                        {archiv.title}
-                      </h2>
-                      <p>
-                        {archiv.description}
-                      </p>
-                      <p>
-                        Read More
-                      </p>
-                    </div>
-                  </Link>
-                </div>
+        <Activity
+          key={archiv.id}
+          content={archiv.title}
+          date={archiv.publishDate}
+          description={archiv.description}
+          artistName={archiv.artistName}
+          tag={`tag`}
+          imageUrl={archiv.cover}
+          link={`/archiv/${archiv.slug}`}
+        />
+
+        </div>
+
+
               ))
             ) : (
               <p>No archiv available at the moment.</p>
             )}
-          </div>
 
-          {/* Pagination Controls */}
-          <Pagination
+      <Pagination
             currentPage={currentPage}
             totalPages={totalPages}
             onPageChange={handlePageChange} // Update page when pagination changes
           />
+
+
+
+
+<div className={styles.footer}>
+      <Footer />
+       </div>
+          </div>
+
+          {/* Pagination Controls */}
+         
         </>
       )}
+
     </div>
+    
   );
+}
+
+
+export default function Archiv() {
+  return (
+    <Suspense >
+      <Archivs />
+    </Suspense>
+    )
+  
 }

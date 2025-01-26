@@ -5,6 +5,7 @@ export interface Tag {
   
   export interface ArchivPost {
     id: number;
+    // documentId:'';
     title: '';
     slug:'';
     publishDate:'';
